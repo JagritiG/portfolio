@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jagriti Goswami</title>
+    <link>https://jagritig.github.io/portfolio/</link>
+    <description>Recent content on Jagriti Goswami</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Apr 2021 11:00:59 -0400</lastBuildDate><atom:link href="https://jagritig.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project 2: gsheets-db-api-plus: A Python DB API for Google Spreadsheets</title>
+      <link>https://jagritig.github.io/portfolio/post/project-2/</link>
+      <pubDate>Thu, 08 Apr 2021 11:00:59 -0400</pubDate>
+      
+      <guid>https://jagritig.github.io/portfolio/post/project-2/</guid>
+      <description>This version (0.2.0) allows you to query, insert, update, and delete Google Spreadsheets using SQL and SQLAlchemy.</description>
+    </item>
+    
+    <item>
+      <title>Project 4: Geo-location Clustering using the k-means Algorithm using Python</title>
+      <link>https://jagritig.github.io/portfolio/post/project-4/</link>
+      <pubDate>Fri, 12 Feb 2021 11:14:48 -0400</pubDate>
+      
+      <guid>https://jagritig.github.io/portfolio/post/project-4/</guid>
+      <description>The objective is to discover a few most promising neighborhoods based on the criteria such as knowing neighborhood, place with no similar restaurants in vicinity, accessibility and visibility of the location, population base, parking, and low crime rate, and present them with statistics so that the stakeholders, the restaurant entrepreneurs, can select the precise location for opening up their new restaurant.
+Methodology used:
+ Python geopy library to obtain the geographical coordinates of San Diego.</description>
+    </item>
+    
+    <item>
+      <title>Project 1: DataMidWare - A Data Middleware Python Library</title>
+      <link>https://jagritig.github.io/portfolio/post/project-1/</link>
+      <pubDate>Sun, 10 May 2020 10:58:08 -0400</pubDate>
+      
+      <guid>https://jagritig.github.io/portfolio/post/project-1/</guid>
+      <description>DataMidWare is a data middleware python library which accelerates data preparation, analysis, and visualization tasks by integrating different technologies, software, and libraries using its APIs.
+The DataMidWare performs the following tasks:
+ Provides direct interactions with database, data preparation &amp;amp; processing tool, algorithm library, and data visualization tool using its APIs. Imports and parses raw data (csv, json, txt, xml) from different sources and load to database (MySQL, NoSQL). Produces clean data from raw format and stores into database for analysis.</description>
+    </item>
+    
+    <item>
+      <title>Project 5: California Housing Price Prediction using Multivariate Regression Model</title>
+      <link>https://jagritig.github.io/portfolio/post/project-5/</link>
+      <pubDate>Mon, 13 Apr 2020 11:15:58 -0400</pubDate>
+      
+      <guid>https://jagritig.github.io/portfolio/post/project-5/</guid>
+      <description>Predict future house price using existing California housing data. Perform supervised learning to develop a powerful ML model. We use Regression model to predict the future house price. As house price depends on many parameters, we build multivariate regression model. Use Train/Test Split to split the data for training and testing. Train our model with train data set. Evaluate the model against our test dataset.   Link to GitHub Repository</description>
+    </item>
+    
+    <item>
+      <title>Project 3: WebViz: Web Visualization using Django and Plotly</title>
+      <link>https://jagritig.github.io/portfolio/post/project-3/</link>
+      <pubDate>Sat, 11 Apr 2020 11:13:32 -0400</pubDate>
+      
+      <guid>https://jagritig.github.io/portfolio/post/project-3/</guid>
+      <description>This is a simple Django app for web visualization which allows users to upload csv file and visualize the data.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://jagritig.github.io/portfolio/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jagritig.github.io/portfolio/contact/</guid>
+      <description>Platform URL     LinkedIn: https://www.linkedin.com/in/jagritig   GitHub: https://github.com/JagritiG   Email: jagritigoswami31@gmail.com    Location: San Diego, California, USA</description>
+    </item>
+    
+  </channel>
+</rss>
