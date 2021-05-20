@@ -1,59 +1,69 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects on Jagriti Goswami</title>
+    <title>Projects on J. Goswami</title>
     <link>https://jagritig.github.io/portfolio/post/</link>
-    <description>Recent content in Projects on Jagriti Goswami</description>
+    <description>Recent content in Projects on J. Goswami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 02 Mar 2017 12:00:00 -0500</lastBuildDate><atom:link href="https://jagritig.github.io/portfolio/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Project 2: gsheets-db-api-plus: A Python DB API for Google Spreadsheets</title>
-      <link>https://jagritig.github.io/portfolio/post/project-2/</link>
-      <pubDate>Thu, 08 Apr 2021 11:00:59 -0400</pubDate>
+      <title>Data Visualization Project: Web Based Data Processing and Visualization using Plotly and Django</title>
+      <link>https://jagritig.github.io/portfolio/post/project-3/</link>
+      <pubDate>Sun, 11 Apr 2021 11:13:32 -0400</pubDate>
       
-      <guid>https://jagritig.github.io/portfolio/post/project-2/</guid>
-      <description>This version (0.2.0) allows you to query, insert, update, and delete Google Spreadsheets using SQL and SQLAlchemy.</description>
+      <guid>https://jagritig.github.io/portfolio/post/project-3/</guid>
+      <description>This is a simple Django app for data analyzing and plotting which allows users to upload CSV file and visualize the data. The objective is processing, analyzing, and plotting based on uploaded data. The user has full control over the visibility of the raw data, basic information such as number of rows, columns, null values, datatypes, etc., descriptive statistics such as count, mean, std, max, min, etc. The user can perform basic data cleaning such as handling missing values.</description>
     </item>
     
     <item>
-      <title>Project 4: Geo-location Clustering using the k-means Algorithm using Python</title>
+      <title>Data Analysis Project: Sales Analysis and Dashboard using Python and Tableau</title>
+      <link>https://jagritig.github.io/portfolio/post/project-6/</link>
+      <pubDate>Thu, 04 Mar 2021 10:58:08 -0400</pubDate>
+      
+      <guid>https://jagritig.github.io/portfolio/post/project-6/</guid>
+      <description>In this project, Jupyter notebook is used for data processing and analysis, and Tableau is used for interactive Dashboard.
+  Dump Sales data into MySQL database.
+  Connect to the MySQL database using Python MySQL connector to retrieve Sales data.
+  Retrieve sales data into pandas DataFrame.
+  Perform Data cleaning and processing using Python data processing library Pandas.
+  Perform exploratory data analysis (EDA) and analyze sales data.</description>
+    </item>
+    
+    <item>
+      <title>Data Science Project: Geo-location Clustering using K-means Algorithm in Python</title>
       <link>https://jagritig.github.io/portfolio/post/project-4/</link>
       <pubDate>Fri, 12 Feb 2021 11:14:48 -0400</pubDate>
       
       <guid>https://jagritig.github.io/portfolio/post/project-4/</guid>
-      <description>The objective is to discover a few most promising neighborhoods based on the criteria such as knowing neighborhood, place with no similar restaurants in vicinity, accessibility and visibility of the location, population base, parking, and low crime rate, and present them with statistics so that the stakeholders, the restaurant entrepreneurs, can select the precise location for opening up their new restaurant.
-Methodology used:
- Python geopy library to obtain the geographical coordinates of San Diego.</description>
+      <description>The objective is to find a right location for opening up a new business or shop. In this project, I have selected San Diego as my example city. The goal is to find a few most promising neighborhoods in San Diego for opening up an Italian restaurant based on the criteria such as knowing neighborhood, places with no similar restaurants in vicinity, accessibility and visibility of the location, population base, parking, and low crime rate, and present them with statistics so that the stakeholders, the restaurant entrepreneurs, can select the precise location for opening up their new restaurant.</description>
     </item>
     
     <item>
-      <title>Project 1: DataMidWare - A Data Middleware Python Library</title>
+      <title>Python Development Project: A Python DB API for Google Spreadsheets (0.2.0) - client project</title>
+      <link>https://jagritig.github.io/portfolio/post/project-2/</link>
+      <pubDate>Thu, 14 Jan 2021 11:00:59 -0400</pubDate>
+      
+      <guid>https://jagritig.github.io/portfolio/post/project-2/</guid>
+      <description>As Google Sheet is web-based, one can access the data stored on Sheets from anywhere via the internet. Since it is a cloud-based app, one can use it as a database for small applications or websites, and can manage it in real-time. But, a very limited query languages are available to query Google sheets. A Python DB API for Google Spreadsheets version (&amp;lt;= 0.1.12) allows to query Google sheets, but does not support INSERT/UPDATE/DELETE operations.</description>
+    </item>
+    
+    <item>
+      <title>Python Development Project: DataMidWare - A Data Middleware Python Library</title>
       <link>https://jagritig.github.io/portfolio/post/project-1/</link>
-      <pubDate>Sun, 10 May 2020 10:58:08 -0400</pubDate>
+      <pubDate>Sat, 10 Oct 2020 10:58:08 -0400</pubDate>
       
       <guid>https://jagritig.github.io/portfolio/post/project-1/</guid>
-      <description>DataMidWare is a data middleware python library which accelerates data preparation, analysis, and visualization tasks by integrating different technologies, software, and libraries using its APIs.
-The DataMidWare performs the following tasks:
- Provides direct interactions with database, data preparation &amp;amp; processing tool, algorithm library, and data visualization tool using its APIs. Imports and parses raw data (csv, json, txt, xml) from different sources and load to database (MySQL, NoSQL). Produces clean data from raw format and stores into database for analysis.</description>
+      <description>In this data-driven-age, every small and large organization is taking their business decisions based on the data insights. Transformation of raw data into usable cleaned data is crucial to take data-driven-decisions. Data cleaning and preparation takes valuable time away from real data science work – model building and deployment. Bulk time is spent on data preparation (According to Anaconda survey-2020, on average 45% of time is spent on data preparation, 21% of time spent on visualization).</description>
     </item>
     
     <item>
-      <title>Project 5: California Housing Price Prediction using Multivariate Regression Model</title>
+      <title>Data Science Project: California Housing Price Prediction using Multivariate Regression Model</title>
       <link>https://jagritig.github.io/portfolio/post/project-5/</link>
       <pubDate>Mon, 13 Apr 2020 11:15:58 -0400</pubDate>
       
       <guid>https://jagritig.github.io/portfolio/post/project-5/</guid>
-      <description>Predict future house price using existing California housing data. Perform supervised learning to develop a powerful ML model. We use Regression model to predict the future house price. As house price depends on many parameters, we build multivariate regression model. Use Train/Test Split to split the data for training and testing. Train our model with train data set. Evaluate the model against our test dataset.   Link to GitHub Repository</description>
-    </item>
-    
-    <item>
-      <title>Project 3: WebViz: Web Visualization using Django and Plotly</title>
-      <link>https://jagritig.github.io/portfolio/post/project-3/</link>
-      <pubDate>Sat, 11 Apr 2020 11:13:32 -0400</pubDate>
-      
-      <guid>https://jagritig.github.io/portfolio/post/project-3/</guid>
-      <description>This is a simple Django app for web visualization which allows users to upload csv file and visualize the data.</description>
+      <description>The objective of this project is to predict future house price using existing California housing data using multivariate regression model. To achieve this goal, we have collected housing data data src, which contains the block groups (or say districts) in California and some statistics about them from 1990 census data. This data has metrics such as population, households, median income, median housing price, and so on. Distances among the centroids of each block group was computed as measured in latitude and longitude.</description>
     </item>
     
   </channel>

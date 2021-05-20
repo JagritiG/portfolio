@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Data Analysis Project: Sales Analysis and Dashboard using Python and Tableau | J. Goswami</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="In this project, Jupyter notebook is used for data processing and analysis, and Tableau is used for interactive Dashboard.
+  Dump Sales data into MySQL database.
+  Connect to the MySQL database using Python MySQL connector to retrieve Sales data.
+  Retrieve sales data into pandas DataFrame.
+  Perform Data cleaning and processing using Python data processing library Pandas.
+  Perform exploratory data analysis (EDA) and analyze sales data.">
+    <meta name="generator" content="Hugo 0.83.1" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+
+  
+  
+    <link rel="stylesheet" href="https://jagritig.github.io/portfolio/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css" >
+  
+
+
+
+  <link rel="stylesheet" href="https://jagritig.github.io/portfolio/css/custom.css">
+
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Data Analysis Project: Sales Analysis and Dashboard using Python and Tableau" />
+<meta property="og:description" content="In this project, Jupyter notebook is used for data processing and analysis, and Tableau is used for interactive Dashboard.
+  Dump Sales data into MySQL database.
+  Connect to the MySQL database using Python MySQL connector to retrieve Sales data.
+  Retrieve sales data into pandas DataFrame.
+  Perform Data cleaning and processing using Python data processing library Pandas.
+  Perform exploratory data analysis (EDA) and analyze sales data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jagritig.github.io/portfolio/post/project-6/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-03-04T10:58:08-04:00" />
+<meta property="article:modified_time" content="2021-03-04T10:58:08-04:00" /><meta property="og:site_name" content="J. Goswami" />
+
+<meta itemprop="name" content="Data Analysis Project: Sales Analysis and Dashboard using Python and Tableau">
+<meta itemprop="description" content="In this project, Jupyter notebook is used for data processing and analysis, and Tableau is used for interactive Dashboard.
+  Dump Sales data into MySQL database.
+  Connect to the MySQL database using Python MySQL connector to retrieve Sales data.
+  Retrieve sales data into pandas DataFrame.
+  Perform Data cleaning and processing using Python data processing library Pandas.
+  Perform exploratory data analysis (EDA) and analyze sales data."><meta itemprop="datePublished" content="2021-03-04T10:58:08-04:00" />
+<meta itemprop="dateModified" content="2021-03-04T10:58:08-04:00" />
+<meta itemprop="wordCount" content="585">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data Analysis Project: Sales Analysis and Dashboard using Python and Tableau"/>
+<meta name="twitter:description" content="In this project, Jupyter notebook is used for data processing and analysis, and Tableau is used for interactive Dashboard.
+  Dump Sales data into MySQL database.
+  Connect to the MySQL database using Python MySQL connector to retrieve Sales data.
+  Retrieve sales data into pandas DataFrame.
+  Perform Data cleaning and processing using Python data processing library Pandas.
+  Perform exploratory data analysis (EDA) and analyze sales data."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://jagritig.github.io/portfolio/images/revenue_and_profit_analysis_fig6.png');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://jagritig.github.io/portfolio/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        J. Goswami
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr2">
+            <a class="hover-white no-underline white-90" href="https://jagritig.github.io/portfolio/about/" title="About Me page", style="font-size: 90%; opacity: 0.90;">
+              About Me
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr2">
+            <a class="hover-white no-underline white-90" href="https://jagritig.github.io/portfolio/contact/" title="Contact page", style="font-size: 90%; opacity: 0.90;">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr2">
+            <a class="hover-white no-underline white-90" href="https://jagritig.github.io/portfolio/post/" title="Projects page", style="font-size: 90%; opacity: 0.90;">
+              Projects
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/jagritig" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/JagritiG" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Data Analysis Project: Sales Analysis and Dashboard using Python and Tableau</h1>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        PROJECTS
+      </aside>
+      
+      <h1 class="f1 athelas mt4 mb1">Data Analysis Project: Sales Analysis and Dashboard using Python and Tableau</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2021-03-04T10:58:08-04:00">March 4, 2021</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><ul>
+<li>
+<p>In this project, Jupyter notebook is used for data processing and analysis, and Tableau is used for interactive Dashboard.</p>
+</li>
+<li>
+<p>Dump Sales data into MySQL database.</p>
+</li>
+<li>
+<p>Connect to the MySQL database using Python MySQL connector to retrieve Sales data.</p>
+</li>
+<li>
+<p>Retrieve sales data into pandas DataFrame.</p>
+</li>
+<li>
+<p>Perform Data cleaning and processing using Python data processing library Pandas.</p>
+</li>
+<li>
+<p>Perform exploratory data analysis (EDA) and  analyze sales data.</p>
+</li>
+<li>
+<p>Calculate following sales insights and KPIs:</p>
+<ol>
+<li>Total Revenue</li>
+<li>Total Sales Quantity</li>
+<li>Revenue by markets</li>
+<li>Revenue by Customers</li>
+<li>Sales Quantity by markets</li>
+<li>Sales Quantity by markets</li>
+<li>Top 5 Products</li>
+<li>Top 5 Markets</li>
+<li>Profit Trend</li>
+<li>Revenue Contribution % by Market</li>
+<li>Revenue Contribution % by Customer Type</li>
+<li>Revenue Contribution % by Zone</li>
+<li>Total Profit Margin</li>
+</ol>
+</li>
+<li>
+<p>Generate plots using Python libraries (Pandas, Matplotlib).</p>
+</li>
+<li>
+<p>Import clean data into Tableau.</p>
+</li>
+<li>
+<p>Create Sales Insight Dashboard in Tableau.</p>
+</li>
+</ul>
+<h4 id="1-install-and-import-required-libraries">1. Install and import required libraries</h4>
+<pre><code># Install required libraries
+# Install a pip package in the current Jupyter kernel
+import sys
+!{sys.executable} -m pip install pandas   # library for data analsysis
+!{sys.executable} -m pip install numpy    # library to handle data in a vectorized manner
+!{sys.executable} -m pip install ipython-sql  # library to connect with MySQL database
+!{sys.executable} -m pip install mysqlclient  # library to connect with MySQL database
+!conda install -c conda-forge mysql-connector-python --yes
+!conda install -c conda-forge pymysql --yes
+!pip install seaborn   # library for plotting
+
+import pandas as pd
+import numpy as np
+
+# libraries for displaying images
+from IPython.display import Image
+from IPython.core.display import HTML
+
+# plotting library
+import matplotlib.cm as cm
+import matplotlib.colors as colors
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+%matplotlib inline
+</code></pre><h4 id="2-create-connection-to-mysql-database">2. Create connection to MySQL database</h4>
+<pre><code># Connect to sql
+# %load_ext sql
+%reload_ext sql
+%sql mysql+mysqldb://root:dbpw@localhost/BBB_sales_data
+</code></pre><pre><code>%%sql
+SHOW
+TABLES;
+</code></pre><figure><img src="https://jagritig.github.io/portfolio/images/sales1.png"/>
+</figure>
+
+<h4 id="3-retrieve-data-into-pandas-dataframe">3. Retrieve data into pandas dataframe</h4>
+<pre><code>import pymysql
+conn=pymysql.connect(host='localhost',port=int(3306),user='root',passwd='dbpw',db='BBB_sales_data')
+</code></pre><pre><code>##### Clean transactions data
+# Retrieve data from transactions table into pandas dataframe
+transactions_df = pd.read_sql_query(&quot;SELECT * FROM transactions&quot;, conn)
+transactions_df.head()
+</code></pre><figure><img src="https://jagritig.github.io/portfolio/images/sales2.png"/>
+</figure>
+
+<pre><code># Check unique currency
+print(&quot;Unique currency: {}&quot;.format(transactions_df[&quot;currency&quot;].unique()))
+</code></pre><pre><code># Check for duplicate rows
+transactions_df.duplicated().sum()
+</code></pre><pre><code># Remove duplicates if any
+transactions_df.drop_duplicates(inplace=True)
+transactions_df.duplicated().sum()
+</code></pre><pre><code># Convert currency from USD to INR
+# !pip install forex-python
+from forex_python.converter import CurrencyRates
+import datetime
+c = CurrencyRates()
+# transactions_df['normalized_sales_amount'] = transactions_df['sales_amount']
+for idx, row in transactions_df.iterrows():
+    if  transactions_df.loc[idx,'currency'] == 'USD':
+        dt = transactions_df.loc[idx,'order_date']
+        date_obj = datetime.datetime.strptime(str(dt), '%Y-%m-%d')
+        transactions_df.loc[idx,'normalized_sales_amount'] = c.convert('USD', 'INR', transactions_df.loc[idx, 'sales_amount'], date_obj)
+    else:
+        transactions_df.loc[idx,'normalized_sales_amount'] = transactions_df.loc[idx,'sales_amount']
+transactions_df.head()
+</code></pre><figure><img src="https://jagritig.github.io/portfolio/images/sales3.png"/>
+</figure>
+
+<pre><code># remove all the rows having sales_amount &lt;= 0
+transactions_df.drop(index=transactions_df[transactions_df['sales_amount'] &lt;= 0].index, inplace=True)
+</code></pre><pre><code># Check and handle missing values
+transactions_df.isnull().sum()
+</code></pre><p>Similarly, clean &lsquo;customers&rsquo; data, &lsquo;markets&rsquo; data, &lsquo;products&rsquo; data, and &lsquo;date&rsquo; data.</p>
+<h4 id="4-sales-analysis">4. Sales analysis</h4>
+<h5 id="41-total-revenue">4.1. Total Revenue</h5>
+<pre><code># Calculate total revenue
+revenue = transactions_df[&quot;normalized_sales_amount&quot;].sum()
+print(&quot;Total Revenue: {:.2f}&quot;.format(round(revenue, 2)))
+
+# Print Revenue with currency symbol
+from forex_python.converter import CurrencyCodes
+c = CurrencyCodes()
+print(&quot;Total Revenue: {}{:.2f}&quot;.format(c.get_symbol('INR'), round(revenue, 2)))
+</code></pre><p>Total Revenue: ₹984861489.35</p>
+<h5 id="42-total-sales-quantity">4.2. Total Sales Quantity</h5>
+<pre><code># Calculate total sales quantity
+sales_qty = transactions_df[&quot;sales_qty&quot;].sum()
+</code></pre><p>Total Sales Quantity: 2429282</p>
+<h5 id="43-revenue-by-markets">4.3. Revenue by Markets</h5>
+<pre><code># Calculate revenue by markets
+revenue_by_markets = merged_inner_markets_transactions.groupby('markets_name')['normalized_sales_amount'].sum().reset_index(name='revenue')
+print(revenue_by_markets.sort_values(by=['revenue'], ascending=False).head())
+print(&quot;\n&quot;)
+print(revenue_by_markets.sort_values(by=['revenue'], ascending=False).tail())
+</code></pre><pre><code># Plot Revenue by Markets
+revenue_by_markets.set_index('markets_name')['revenue'].sort_values().plot(kind='barh', figsize=(10, 8))
+plt.xlabel('Revenue ({})'.format(c.get_symbol('INR')), font_param, labelpad=16)
+plt.ylabel(&quot;Markets&quot;, labelpad=16)
+plt.title(&quot;Revenue by Markets&quot;, y=1.02, fontsize=22)
+ax = plt.gca()
+ax.xaxis.set_major_formatter(tick.FuncFormatter(reformat_large_tick_values));
+</code></pre><figure><img src="https://jagritig.github.io/portfolio/images/sales4.png"/>
+</figure>
+
+<h5 id="44-revenue-by-customers">4.4. Revenue by Customers</h5>
+<pre><code># Calculate revenue by customers
+revenue_by_customers = merged_inner_customers_transactions.groupby('custmer_name')['normalized_sales_amount'].sum().reset_index(name='revenue')
+print(revenue_by_customers.sort_values(by=['revenue'], ascending=False).head())
+print(&quot;\n&quot;)
+print(revenue_by_customers.sort_values(by=['revenue'], ascending=False).tail())
+</code></pre><pre><code># Plot Revenue by Customers
+revenue_by_customers.set_index('custmer_name')['revenue'].sort_values().plot(kind='barh', figsize=(10, 8))
+plt.xlabel('Revenue ({})'.format(c.get_symbol('INR')), font_param, labelpad=16)
+plt.ylabel(&quot;Customers&quot;, labelpad=16)
+plt.title(&quot;Revenue by Customers&quot;, y=1.02, fontsize=22)
+ax = plt.gca()
+plt.yticks(fontsize=10)
+ax.xaxis.set_major_formatter(tick.FuncFormatter(reformat_large_tick_values));
+</code></pre><figure><img src="https://jagritig.github.io/portfolio/images/sales7.png"/>
+</figure>
+
+<h5 id="45-profit-trend">4.5. Profit Trend</h5>
+<pre><code># Plot profit trend
+revenue_by_years.set_index('cy_date')['revenue'].sort_values().plot(kind='line', color=&quot;royalblue&quot;, figsize=(14, 6))
+plt.ylabel(&quot;Revenue&quot;, labelpad=16)
+plt.xlabel(&quot;Year&quot;, labelpad=16)
+plt.title(&quot;Profit Trend&quot;, y=1.02, fontsize=22)
+ax = plt.gca()
+plt.xticks(fontsize=14)
+ax.yaxis.set_major_formatter(tick.FuncFormatter(reformat_large_tick_values));
+</code></pre><figure><img src="https://jagritig.github.io/portfolio/images/sales5.png"/>
+</figure>
+
+<h4 id="5-tableau-dashboard">5. Tableau Dashboard</h4>
+<p><figure><img src="https://jagritig.github.io/portfolio/images/revenue_and_profit_analysis_fig6.png"/>
+</figure>
+
+<figure><img src="https://jagritig.github.io/portfolio/images/sales_KPI_green_fig2.png"/>
+</figure>
+</p>
+<p><a href="https://github.com/JagritiG/data_analytics_projects/blob/main/sales_analysis/code/bbb_sales_analysis.ipynb">Notebook</a>
+<a href="https://github.com/JagritiG/data_analytics_projects/tree/main/sales_analysis">Link to GitHub Repository</a></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-dark-blue bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://jagritig.github.io/portfolio/" >
+    &copy;  J. Goswami 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/jagritig" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/JagritiG" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
