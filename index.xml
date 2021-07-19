@@ -2,26 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jagriti Goswami on J. Goswami</title>
-    <link>https://jagritig.github.io/portfolio/</link>
+    <link>https://example.com/</link>
     <description>Recent content in Jagriti Goswami on J. Goswami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Apr 2021 11:13:32 -0400</lastBuildDate><atom:link href="https://jagritig.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Jun 2021 10:58:08 -0400</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Project: Performance Analysis and Speedup of AWS Data Pipeline and Analytics</title>
+      <link>https://example.com/post/project-7/</link>
+      <pubDate>Sun, 20 Jun 2021 10:58:08 -0400</pubDate>
+      
+      <guid>https://example.com/post/project-7/</guid>
+      <description>According to Statista, worldwide data volume, from 2010 to 2025, are increasing rapidly – reaching 64.2 zettabytes in 2020 and projected to grow more than 180 zettabytes by 2025. With the rapid growth of the data volume, storage capacity is projected to increase, growing at a compound annual growth rate of 19.2% over the forecast period from 2020 to 2025.  With the exponential growth of data, organizations are facing many data analytics challenges such as:</description>
+    </item>
+    
     <item>
       <title>Data Visualization Project: Web Based Data Processing and Visualization using Plotly and Django</title>
-      <link>https://jagritig.github.io/portfolio/post/project-3/</link>
+      <link>https://example.com/post/project-3/</link>
       <pubDate>Sun, 11 Apr 2021 11:13:32 -0400</pubDate>
       
-      <guid>https://jagritig.github.io/portfolio/post/project-3/</guid>
+      <guid>https://example.com/post/project-3/</guid>
       <description>This is a simple Django app for data analyzing and plotting which allows users to upload CSV file and visualize the data. The objective is processing, analyzing, and plotting based on uploaded data. The user has full control over the visibility of the raw data, basic information such as number of rows, columns, null values, datatypes, etc., descriptive statistics such as count, mean, std, max, min, etc. The user can perform basic data cleaning such as handling missing values.</description>
     </item>
     
     <item>
       <title>Data Analysis Project: Sales Analysis and Dashboard using Python and Tableau</title>
-      <link>https://jagritig.github.io/portfolio/post/project-6/</link>
+      <link>https://example.com/post/project-6/</link>
       <pubDate>Thu, 04 Mar 2021 10:58:08 -0400</pubDate>
       
-      <guid>https://jagritig.github.io/portfolio/post/project-6/</guid>
+      <guid>https://example.com/post/project-6/</guid>
       <description>In this project, Jupyter notebook is used for data processing and analysis, and Tableau is used for interactive Dashboard.
   Dump Sales data into MySQL database.
   Connect to the MySQL database using Python MySQL connector to retrieve Sales data.
@@ -32,37 +41,37 @@
     
     <item>
       <title>Data Science Project: Geo-location Clustering using K-means Algorithm in Python</title>
-      <link>https://jagritig.github.io/portfolio/post/project-4/</link>
+      <link>https://example.com/post/project-4/</link>
       <pubDate>Fri, 12 Feb 2021 11:14:48 -0400</pubDate>
       
-      <guid>https://jagritig.github.io/portfolio/post/project-4/</guid>
+      <guid>https://example.com/post/project-4/</guid>
       <description>The objective is to find a right location for opening up a new business or shop. In this project, I have selected San Diego as my example city. The goal is to find a few most promising neighborhoods in San Diego for opening up an Italian restaurant based on the criteria such as knowing neighborhood, places with no similar restaurants in vicinity, accessibility and visibility of the location, population base, parking, and low crime rate, and present them with statistics so that the stakeholders, the restaurant entrepreneurs, can select the precise location for opening up their new restaurant.</description>
     </item>
     
     <item>
       <title>Python Development Project: A Python DB API for Google Spreadsheets (0.2.0) - client project</title>
-      <link>https://jagritig.github.io/portfolio/post/project-2/</link>
+      <link>https://example.com/post/project-2/</link>
       <pubDate>Thu, 14 Jan 2021 11:00:59 -0400</pubDate>
       
-      <guid>https://jagritig.github.io/portfolio/post/project-2/</guid>
+      <guid>https://example.com/post/project-2/</guid>
       <description>As Google Sheet is web-based, one can access the data stored on Sheets from anywhere via the internet. Since it is a cloud-based app, one can use it as a database for small applications or websites, and can manage it in real-time. But, a very limited query languages are available to query Google sheets. A Python DB API for Google Spreadsheets version (&amp;lt;= 0.1.12) allows to query Google sheets, but does not support INSERT/UPDATE/DELETE operations.</description>
     </item>
     
     <item>
       <title>Python Development Project: DataMidWare - A Data Middleware Python Library</title>
-      <link>https://jagritig.github.io/portfolio/post/project-1/</link>
+      <link>https://example.com/post/project-1/</link>
       <pubDate>Sat, 10 Oct 2020 10:58:08 -0400</pubDate>
       
-      <guid>https://jagritig.github.io/portfolio/post/project-1/</guid>
+      <guid>https://example.com/post/project-1/</guid>
       <description>In this data-driven-age, every small and large organization is taking their business decisions based on the data insights. Transformation of raw data into usable cleaned data is crucial to take data-driven-decisions. Data cleaning and preparation takes valuable time away from real data science work – model building and deployment. Bulk time is spent on data preparation (According to Anaconda survey-2020, on average 45% of time is spent on data preparation, 21% of time spent on visualization).</description>
     </item>
     
     <item>
       <title>Data Science Project: California Housing Price Prediction using Multivariate Regression Model</title>
-      <link>https://jagritig.github.io/portfolio/post/project-5/</link>
+      <link>https://example.com/post/project-5/</link>
       <pubDate>Mon, 13 Apr 2020 11:15:58 -0400</pubDate>
       
-      <guid>https://jagritig.github.io/portfolio/post/project-5/</guid>
+      <guid>https://example.com/post/project-5/</guid>
       <description>The objective of this project is to predict future house price using existing California housing data using multivariate regression model. To achieve this goal, we have collected housing data data src, which contains the block groups (or say districts) in California and some statistics about them from 1990 census data. This data has metrics such as population, households, median income, median housing price, and so on. Distances among the centroids of each block group was computed as measured in latitude and longitude.</description>
     </item>
     
