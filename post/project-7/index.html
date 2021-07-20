@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>AWS Project: Performance Analysis and Speedup of AWS Data Pipeline and Analytics | J. Goswami</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="According to Statista, worldwide data volume, from 2010 to 2025, are increasing rapidly – reaching 64.2 zettabytes in 2020 and projected to grow more than 180 zettabytes by 2025. With the rapid growth of the data volume, storage capacity is projected to increase, growing at a compound annual growth rate of 19.2% over the forecast period from 2020 to 2025.  With the exponential growth of data, organizations are facing many data analytics challenges such as:">
+    <meta name="generator" content="Hugo 0.83.1" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+
+  
+  
+    <link rel="stylesheet" href="/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css" >
+  
+
+
+
+  <link rel="stylesheet" href="/css/custom.css">
+
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="AWS Project: Performance Analysis and Speedup of AWS Data Pipeline and Analytics" />
+<meta property="og:description" content="According to Statista, worldwide data volume, from 2010 to 2025, are increasing rapidly – reaching 64.2 zettabytes in 2020 and projected to grow more than 180 zettabytes by 2025. With the rapid growth of the data volume, storage capacity is projected to increase, growing at a compound annual growth rate of 19.2% over the forecast period from 2020 to 2025.  With the exponential growth of data, organizations are facing many data analytics challenges such as:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/project-7/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-20T10:58:08-04:00" />
+<meta property="article:modified_time" content="2021-06-20T10:58:08-04:00" /><meta property="og:site_name" content="J. Goswami" />
+
+<meta itemprop="name" content="AWS Project: Performance Analysis and Speedup of AWS Data Pipeline and Analytics">
+<meta itemprop="description" content="According to Statista, worldwide data volume, from 2010 to 2025, are increasing rapidly – reaching 64.2 zettabytes in 2020 and projected to grow more than 180 zettabytes by 2025. With the rapid growth of the data volume, storage capacity is projected to increase, growing at a compound annual growth rate of 19.2% over the forecast period from 2020 to 2025.  With the exponential growth of data, organizations are facing many data analytics challenges such as:"><meta itemprop="datePublished" content="2021-06-20T10:58:08-04:00" />
+<meta itemprop="dateModified" content="2021-06-20T10:58:08-04:00" />
+<meta itemprop="wordCount" content="1465">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AWS Project: Performance Analysis and Speedup of AWS Data Pipeline and Analytics"/>
+<meta name="twitter:description" content="According to Statista, worldwide data volume, from 2010 to 2025, are increasing rapidly – reaching 64.2 zettabytes in 2020 and projected to grow more than 180 zettabytes by 2025. With the rapid growth of the data volume, storage capacity is projected to increase, growing at a compound annual growth rate of 19.2% over the forecast period from 2020 to 2025.  With the exponential growth of data, organizations are facing many data analytics challenges such as:"/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://example.com/images/aws_architecture.png');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        J. Goswami
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr2">
+            <a class="hover-white no-underline white-90" href="/about/" title="About Me page", style="font-size: 90%; opacity: 0.90;">
+              About Me
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr2">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page", style="font-size: 90%; opacity: 0.90;">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr2">
+            <a class="hover-white no-underline white-90" href="/post/" title="Projects page", style="font-size: 90%; opacity: 0.90;">
+              Projects
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/jagritig" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/JagritiG" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">AWS Project: Performance Analysis and Speedup of AWS Data Pipeline and Analytics</h1>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        PROJECTS
+      </aside>
+      
+      <h1 class="f1 athelas mt4 mb1">AWS Project: Performance Analysis and Speedup of AWS Data Pipeline and Analytics</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2021-06-20T10:58:08-04:00">June 20, 2021</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>According to <a href="https://www.statista.com/statistics/871513/worldwide-data-created/">Statista</a>, worldwide data volume, from 2010 to 2025, are increasing rapidly – reaching <strong>64.2</strong> zettabytes in 2020 and projected to grow more than <strong>180</strong> zettabytes by 2025. With the rapid growth of the data volume, storage capacity is projected to increase, growing at a compound annual growth rate of <strong>19.2%</strong> over the forecast period from 2020 to 2025.
+<figure><img src="/images/data_volume3.png"/>
+</figure>
+</p>
+<p>With the exponential growth of data, organizations are facing many data analytics challenges such as:</p>
+<ul>
+<li>Inefficient data management due to large size, complexity, variety, and variability</li>
+<li>Data velocity – speed of data generation and process to meet demands</li>
+<li>Open-source data analytics tools to meet enterprise security standard</li>
+<li>Processing power – latency and cost of data processing</li>
+</ul>
+<p>In this project, we will focus on performance analysis and speedup of AWS Data Pipeline and Analytics.</p>
+<h3 id="why-choose-amazon-web-service-aws-for-data-analytics">Why Choose Amazon Web Service (AWS) for Data Analytics?</h3>
+<p>Serverless capabilities of Amazon S3, AWS Glue, Amazon Athena, Amazon QuickSight, and AWS Lambda  gives flexibility to build data pipeline and analytics architecture to speedup data analytics process.
+We can store, transform, enrich, analyze, and visualize a large volume of data using these AWS services in a highly durable, secure, and scalable manner. In the serverless data analytics environment, there is no infrastructure needed to manage and monitor the performance.</p>
+<p>According to <a href="https://pages.awscloud.com/GLOBAL-multi-DL-gartner-mq-cips-2020-learn.html?pg=LWIAWS">Gartner 2020</a> report, Amazon Web Service is leading with the highest score in both axes of measurement – Ability to Execute and Completeness of Vision. According to the report on cloud market share in 2021 by <a href="https://www.statista.com/chart/18819/worldwide-market-share-of-leading-cloud-infrastructure-service-providers/">Statista</a>, Amazon leads Cloud market share (<strong>32%</strong>) followed by Azure (<strong>20%</strong>), Google Cloud (<strong>9%</strong>), and many more behind them. In the following figure, we have illustrated Gartner&rsquo;s magic quadrant report, Cloud market shares, Cloud Infrastructure and Platform Services Reviews and Ratings: Ratings (# of reviews) (sourse: <a href="https://www.gartner.com/reviews/market/public-cloud-iaas/compare/amazon-web-services-vs-google-vs-ibm-vs-microsoft">Gartner peerinsights</a>).
+<figure><img src="/images/comparison_table_cloud_service.png"/>
+</figure>
+</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h3 id="serverless-data-analytics-architecture-on-aws">Serverless Data Analytics Architecture on AWS</h3>
+<p>The following diagram is a simple serverless data pipeline and analytics architecture implemented on AWS.
+<figure><img src="/images/aws_architecture.png"/>
+</figure>
+</p>
+<p>Components of the above serverless data pipeline and analytics architecture are as follows:</p>
+<h5 id="amazon-s3">Amazon S3</h5>
+<p>Amazon S3 or Amazon Simple Storage Service is an object storage service that offers industry-leading scalability, high availability, security, and low latency with 99.999999999% durability and between 99.95% to 99.99% availability. Amazon S3 can be used to store and retrieve any amount of data.</p>
+<h5 id="amazon-glue">Amazon Glue</h5>
+<p>AWS Glue is a fully managed ETL (extract, transform, and load) service that makes it simple and cost-effective to categorize, clean, enrich, and move data reliably between various data stores and data streams. AWS Glue discovers your data and stores the associated metadata (e.g., table definition and schema) in AWS Glue Data Catalog. Once cataloged, data is immediately searchable, queryable, and available for ETL.</p>
+<h5 id="aws-glue-data-catalog">AWS Glue Data Catalog</h5>
+<p>The AWS Glue Data Catalog is a central metadata store. It is a managed service that lets you store, annotate, and share metadata in the AWS Cloud in the same way you would in an Apache Hive metastore.</p>
+<h5 id="aws-glue-crawler">AWS Glue Crawler</h5>
+<p>An AWS Glue Crawler reads data from data stores and writes to the targets specified in the source and target Data Catalog tables. A crawler can crawl multiple data stores in a single run. Upon completion, the crawler creates or updates one or more tables in Data Catalog.</p>
+<h5 id="aws-glue-etl-job">AWS Glue ETL Job</h5>
+<p>Using the metadata in the Data Catalog, AWS Glue automatically generates a Scala or PySpark scripts, which runs on Apache Spark, to perform extract, transform, and load (ETL) work in AWS Glue.</p>
+<h5 id="amazon-athena">Amazon Athena</h5>
+<p>Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. Athena supports and works with a variety of standard data formats, including CSV, JSON, Apache ORC, Apache Avro, and Apache Parquet. Using Athena you can point to data in Amazon S3, define the schema, and start querying using standard SQL. Athena is out-of-the-box integrated with AWS Glue Data Catalog.</p>
+<h5 id="amazon-quicksight">Amazon QuickSight</h5>
+<p>Amazon QuickSight is a fully managed business intelligence (BI) service. QuickSight lets you create and publish interactive dashboards that includes Machine Learning-powered insights. QuickSight dashboards can be accessed from any device, and embedded into your applications, portals, and websites.</p>
+<h3 id="environment-and-security-setup">Environment and Security Setup</h3>
+<ol>
+<li>Create and activate an AWS account (<a href="https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/">instructions</a>)</li>
+<li>Create an Amazon Identity and Account Management (IAM) Role to give
+<ol>
+<li>S3 bucket access permission</li>
+<li>Glue service permission for crawling and transforming data</li>
+</ol>
+</li>
+</ol>
+<h5 id="environment-and-security-setup-steps">Environment and security setup steps:</h5>
+<pre><code>    1. Go to IAM dashboard and click “Roles”
+    2. Click on “Create Role”
+    3. On the create role dashboard, select AWS service and choose Glue from the list of services
+    4. Hit Next: Permission to continue
+    5. From the Filter Policies list enter “glue” and select the AWSGlueServiceRole policy
+    6. Enter “s3” into the Filter Policies list and select the AmazonS3FullAccess policy (in real project, policy is used to provide read access to the bucket)
+    7. Enter “athena” into the Filter Policies list and select the AmazonAthenaFullAccess policy
+    8. Enter “quicksight” into the Filter Policies list and select the AmazonQuicksightAthenaAccess policy
+    9. Click Next: Tags
+    10. Add any tags or leave it blank and click Next: Review
+    11. Give your role a name (e.g., based on this project: sales_insights_s3_glu_athena) and click “Create Role”
+</code></pre>
+<h3 id="data">Data</h3>
+<p>I have used open datasets from Kaggle in this project. Though our example datasets are small compared to most big data processing scenarios but they are enough to achieve our project goal.</p>
+<ol>
+<li>City Temperature (140MB): Daily temperature of major cities of the world. Source: <a href="https://www.kaggle.com/sudalairajkumar/daily-temperature-of-major-cities?select=city_temperature.csv">kaggle</a></li>
+<li>Electronics Store (360MB): Purchase data from April 2020 to November 2020 from a large home appliances and electronics online store. Source: <a href="https://www.kaggle.com/mkechinov/ecommerce-purchase-history-from-electronics-store">kaggle</a></li>
+<li>Customer complaints (891MB): Real world complaints data received about financial products and services. Source: <a href="https://www.kaggle.com/selener/consumer-complaint-database">kaggle</a></li>
+</ol>
+<h3 id="methodology">Methodology</h3>
+<h4 id="1-data-storage-in-amazon-s3-bucket">1. Data storage in Amazon S3 bucket</h4>
+<ol>
+<li>Create and configure Amazon S3 buckets</li>
+<li>Import CSV files into buckets</li>
+</ol>
+<figure><img src="/images/s3_buckets.png"/>
+</figure>
+
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="2-data-extract---transform---load-etl">2. Data Extract - Transform - Load (ETL)</h4>
+<ol>
+<li>Create Amazon Glue Crawler and crawl raw CSV data from Amazon S3 buckets</li>
+</ol>
+<figure><img src="/images/glue_crawler.png"/>
+</figure>
+
+<ol start="2">
+<li>Create Amazon Glue Data Catalog</li>
+</ol>
+<figure><img src="/images/glue_data_catalog.png"/>
+</figure>
+
+<ol start="3">
+<li>Transform raw CSV data to Parquet, crawl, and add parquet to Glue Data Catalog</li>
+</ol>
+<figure><img src="/images/glue_etl_jobs.png"/>
+</figure>
+
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Data size can be reduced by <strong>80.46%</strong> by transforming raw CSV data into Parquet (around 5 to 1 compression), which results in further reduction in query cost.</p>
+<h4 id="3-data--analysis">3. Data  Analysis</h4>
+<ol>
+<li>Connect Amazon Athena with Glue Data Catalog</li>
+<li>Use standard SQL to query data with Athena</li>
+</ol>
+<figure><img src="/images/complaints_select.png"/>
+</figure>
+
+<h4 id="4-visualization">4. Visualization</h4>
+<ol>
+<li>QuickSight Account Setup</li>
+</ol>
+<h5 id="steps-to-quicksight-account-setup">Steps to QuickSight account setup:</h5>
+<pre><code>1. Go to Amazon Management Console &gt; type QuickSight on search box
+2. Inside Services click on QuickSight
+3. In the new window &gt; click on Sign up for QuickSight
+4. Select Enterprise version (Standard and Enterprise both are free for 60 days) and click on Continue
+5. In the Create your QuickSight account screen, for Edition select Use IAM federated identities only (based on your project requirement)
+6. In QuickSight region select region that you are using for other AWS service (e.g. US East (Ohio))
+7. Enter QuickSight account name (e.g. Yourname-Athena)
+8. Enter Notification email address (e.g. xxx@gmail.com)
+9. Check Enable autodiscovery of data and users in your Amazon Redshift, Amazon RDS, and Amazon IAM services
+10. Check Amazon Athena
+11. Check Amazon S3 and select the buckets that you want QuickSight to be able to access and check Write permission for Athena Workgroup
+12. Click Finish
+13. In the new screen, click on Go to Amazon QuickSight
+</code></pre>
+<ol start="2">
+<li>Connect QuickSight with Athena and add data sources</li>
+<li>Create data model and interactive dashboard</li>
+</ol>
+<figure><img src="/images/complaints_quicksight.png"/>
+</figure>
+
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h3 id="run-sql-queries-with-amazon-athena">Run SQL queries with Amazon Athena</h3>
+<p>Open the Athena dashboard and select the database to perform query. We run the following query on complaints data:</p>
+<pre><code>SELECT Count(*) FROM &quot;complaints&quot;.&quot;cust_complaints&quot;
+where &quot;complaints&quot;.&quot;cust_complaints&quot;.subproduct='Mortgage';
+</code></pre><figure><img src="/images/complaints_athena.png"/>
+</figure>
+
+<h3 id="query-performance">Query Performance</h3>
+<p>We have performed following two simple queries using MySQL and AWS Athena (both raw and parquet data) and compared query performance as shown in the below tables and plots.</p>
+<pre><code>  SELECT Distinct column FROM table;
+  SELECT Count(*) FROM table where column='value';
+</code></pre><figure><img src="/images/query_performance.png"/>
+</figure>
+
+<p>Average data scanned is decreased by <strong>99.5%</strong> with parquet data. Average runtime is reduced by <strong>3.33x</strong> (from using MySQL) and <strong>2.22x</strong> (from raw data using Athena) with parquet data.</p>
+<h3 id="aws-quicksight-dashboard-demo">AWS QuickSight Dashboard Demo</h3>
+<p>Business Data insights dashboard using AWS QuickSight (data source: <a href="https://github.com/codebasics/DataAnalysisProjects/tree/master/1_SalesInsights">github/codebasics</a>)</p>
+
+
+<video width=100% controls autoplay>
+  <source src="/videos/quicksight_dash3.mp4" type="video/mp4">
+</video>
+
+
+<h3 id="summary-of-result-and-achievement">Summary of Result and Achievement</h3>
+<h5 id="result">Result:</h5>
+<ul>
+<li>Implemented serverless data pipeline on AWS for performance analysis and speedup</li>
+<li>Performed data analysis and visualization</li>
+<li>Stored CSV data (<strong>140MB</strong>, <strong>360MB</strong>, <strong>891MB</strong>) in Amazon S3 buckets</li>
+<li>Transformed raw data into parquet format and created Glue Data catalog</li>
+<li>Performed SQL queries on Cataloged data (both raw and parquet) using Amazon Athena</li>
+<li>Analyzed and compared query performance: MySQL vs AWS Athena</li>
+<li>Created Dashboard using Amazon QuickSight</li>
+</ul>
+<h5 id="achievement">Achievement:</h5>
+<ul>
+<li>Data size reduced by <strong>80.46%</strong> by transforming raw CSV data into Parquet (around 5 to 1 compression), resulting in reduced query cost</li>
+<li>Average runtime reduced by <strong>3.33x</strong> (from using MySQL) and <strong>2.22x</strong> (from raw data using Athena) with parquet data</li>
+<li>Average data scanned reduced by <strong>99.5%</strong> with parquet data</li>
+</ul>
+<p><a href="https://github.com/JagritiG/PPT/blob/main/aws_data_prep_analytics_viz_02.pdf">PPT</a></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://example.com" >
+    &copy;  J. Goswami 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/jagritig" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/JagritiG" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

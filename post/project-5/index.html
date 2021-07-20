@@ -17,12 +17,12 @@
 
   
   
-    <link rel="stylesheet" href="https://jagritig.github.io/portfolio/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css" >
+    <link rel="stylesheet" href="/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css" >
   
 
 
 
-  <link rel="stylesheet" href="https://jagritig.github.io/portfolio/css/custom.css">
+  <link rel="stylesheet" href="/css/custom.css">
 
 
     
@@ -35,7 +35,7 @@
     <meta property="og:title" content="Data Science Project: California Housing Price Prediction using Multivariate Regression Model" />
 <meta property="og:description" content="The objective of this project is to predict future house price using existing California housing data using multivariate regression model. To achieve this goal, we have collected housing data data src, which contains the block groups (or say districts) in California and some statistics about them from 1990 census data. This data has metrics such as population, households, median income, median housing price, and so on. Distances among the centroids of each block group was computed as measured in latitude and longitude." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jagritig.github.io/portfolio/post/project-5/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://example.com/post/project-5/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-04-13T11:15:58-04:00" />
 <meta property="article:modified_time" content="2020-04-13T11:15:58-04:00" /><meta property="og:site_name" content="J. Goswami" />
 
@@ -58,11 +58,11 @@
 
   
   
-  <header class="cover bg-top" style="background-image: url('https://jagritig.github.io/portfolio/images/california_housing_prices_plotly.png');">
+  <header class="cover bg-top" style="background-image: url('https://example.com/images/california_housing_prices_plotly.png');">
     <div class="pb3-m pb6-l bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
-    <a href="https://jagritig.github.io/portfolio/" class="f3 fw2 hover-white no-underline white-90 dib">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
       
         J. Goswami
       
@@ -74,19 +74,19 @@
         <ul class="pl0 mr3">
           
           <li class="list f5 f4-ns fw4 dib pr2">
-            <a class="hover-white no-underline white-90" href="https://jagritig.github.io/portfolio/about/" title="About Me page", style="font-size: 90%; opacity: 0.90;">
+            <a class="hover-white no-underline white-90" href="/about/" title="About Me page", style="font-size: 90%; opacity: 0.90;">
               About Me
             </a>
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr2">
-            <a class="hover-white no-underline white-90" href="https://jagritig.github.io/portfolio/contact/" title="Contact page", style="font-size: 90%; opacity: 0.90;">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page", style="font-size: 90%; opacity: 0.90;">
               Contact
             </a>
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr2">
-            <a class="hover-white no-underline white-90" href="https://jagritig.github.io/portfolio/post/" title="Projects page", style="font-size: 90%; opacity: 0.90;">
+            <a class="hover-white no-underline white-90" href="/post/" title="Projects page", style="font-size: 90%; opacity: 0.90;">
               Projects
             </a>
           </li>
@@ -166,11 +166,11 @@
 <p>The columns are: longitude, latitude, housing_median_age, total_bedrooms, population, households
 median_income, median_house_value, ocean_proximity.</p>
 <h4 id="1-statistics-of-each-features">1. Statistics of each features</h4>
-<figure><img src="https://jagritig.github.io/portfolio/images/house_price1.png"/>
+<figure><img src="/images/house_price1.png"/>
 </figure>
 
 <h4 id="2-distribution-of-each-features">2. Distribution of each features</h4>
-<figure><img src="https://jagritig.github.io/portfolio/images/house_price2.png"/>
+<figure><img src="/images/house_price2.png"/>
 </figure>
 
 <ul>
@@ -220,7 +220,7 @@ fig.update_layout(
         color=&quot;RebeccaPurple&quot;
     )
 )
-</code></pre><figure><img src="https://jagritig.github.io/portfolio/images/california_housing_prices_plotly.png"/>
+</code></pre><figure><img src="/images/california_housing_prices_plotly.png"/>
 </figure>
 
 <ul>
@@ -234,7 +234,7 @@ fig.update_layout(
 from pandas.plotting import scatter_matrix
 attributes = train_set_copy[[&quot;median_house_value&quot;, &quot;median_income&quot;, &quot;total_rooms&quot;, &quot;housing_median_age&quot;]]
 scatter_matrix(attributes, alpha=0.8, figsize=(14, 10))
-</code></pre><p><figure><img src="https://jagritig.github.io/portfolio/images/house_price3.png"/>
+</code></pre><p><figure><img src="/images/house_price3.png"/>
 </figure>
 
 We have observed following insights from the scatter plot:</p>
@@ -255,7 +255,7 @@ We’ll now focus on the correlation between median_house_value and the median_i
 # Attributes: median_house_value and median_income   
 train_set_copy.plot(kind='scatter', x='median_income', y='median_house_value', alpha=0.5, figsize=(10, 6))
 plt.suptitle(&quot;House price vs median income&quot;, fontsize=16)
-</code></pre><figure><img src="https://jagritig.github.io/portfolio/images/house_price4.png"/>
+</code></pre><figure><img src="/images/house_price4.png"/>
 </figure>
 
 <h4 id="8-preparing-data-for-modeling">8. Preparing Data for Modeling</h4>
@@ -398,7 +398,7 @@ rmse = np.sqrt(mse)
     </main>
     <footer class="bg-navy bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://jagritig.github.io/portfolio/" >
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://example.com" >
     &copy;  J. Goswami 2021 
   </a>
     <div>
